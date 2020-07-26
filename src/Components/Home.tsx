@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MapGL, { Source, Layer } from 'react-map-gl';
-import { InlineLoading } from 'carbon-components-react';
+import { InlineLoading, Tile, TooltipIcon } from 'carbon-components-react';
 import { Feature, Polygon } from 'geojson';
 import LivabilityModal from './LivabilityModal';
 import isEmpty from 'lodash/isEmpty';
@@ -36,6 +36,34 @@ function Home() {
 
   return (
     <React.Fragment>
+      {!isEmpty(govermentAreas) && (
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '40px',
+            left: '20px',
+            zIndex: 1000,
+            width: '300px',
+          }}
+        >
+          <Tile light>
+            <strong>Welcome to Spaceways</strong>
+            <br />
+            <br />
+            This is our vision of how to measure liveability for the DELWP; we've generated randomised data for the purposes of this prototype. Click on an LGA to see more information.
+            <div style={{textAlign: 'right'}}>
+            <TooltipIcon
+              align='center'
+              direction='top'
+              tooltipText="This prototype was created on the traditional lands of the Wurundjeri people of the Kulin Nation. We pay our respects to Elders past, present and emerging."
+            >
+              <img src="flag.svg" style={ { width: 60, height: 30, marginTop: 20, marginLeft: -4} } alt="Australian Aboriginal Flag" />
+            </TooltipIcon>
+            </div>
+          </Tile>
+        </div>
+      )}
+
       {isEmpty(govermentAreas) && (
         <div
           style={{
@@ -72,7 +100,7 @@ function Home() {
             <Layer
               type="fill"
               paint={{
-                'fill-color': '#9e72e3',
+                'fill-color': 'transparent',
                 'fill-outline-color': '#9e72e3',
                 'fill-opacity': 0.5,
               }}

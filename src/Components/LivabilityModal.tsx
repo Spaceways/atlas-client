@@ -51,7 +51,7 @@ function LivabilityModal({...props}) {
                 label: "Responses"
             }
         },
-        height: "400px"
+        height: "300px"
     };
 
     const years = ["2020", "2019", "2018", "2017", "2016", "2015"];
@@ -82,7 +82,7 @@ function LivabilityModal({...props}) {
           }
         },
         "curve": "curveNatural",
-        "height": "400px"
+        "height": "300px"
     }
 
     const headerData = [
@@ -102,7 +102,7 @@ function LivabilityModal({...props}) {
 
     const rowData: any = times(20, (i) => {
         return {
-            id: i,
+            id: `${i}`,
             name: faker.name.findName(),
             comment: faker.lorem.sentence(),
             date: moment(faker.date.past()).format('LL'),
@@ -110,7 +110,7 @@ function LivabilityModal({...props}) {
     });
 
     return (
-        <Modal key={props.council} passiveModal modalLabel={'Local Goverment Area'} modalHeading={modalHeading} open={props.open} onRequestClose={() => props.onRequestClose(undefined)}>
+        <Modal aria-label={`Content for ${props.council}`} hasScrollingContent key={props.council} passiveModal modalLabel={'Local Goverment Area'} modalHeading={modalHeading} open={props.open} onRequestClose={() => props.onRequestClose(undefined)}>
                 <Tabs type='container'>
                     <Tab
                     href="#"
@@ -138,7 +138,7 @@ function LivabilityModal({...props}) {
                         href="#"
                         id="tab-2"
                         label="Sentiment"
-                    >
+                        >
                         <DataTable
                             rows={rowData}
                             headers={headerData}
