@@ -51,7 +51,7 @@ function LivabilityModal({...props}) {
                 label: "Responses"
             }
         },
-        height: "300px"
+        height: "400px"
     };
 
     const years = ["2020", "2019", "2018", "2017", "2016", "2015"];
@@ -82,7 +82,7 @@ function LivabilityModal({...props}) {
           }
         },
         "curve": "curveNatural",
-        "height": "300px"
+        "height": "400px"
     }
 
     const headerData = [
@@ -100,7 +100,7 @@ function LivabilityModal({...props}) {
         },
     ];
 
-    const rowData: any = times(20, (i) => {
+    const rowData: any = times(5, (i) => {
         return {
             id: `${i}`,
             name: faker.name.findName(),
@@ -110,7 +110,7 @@ function LivabilityModal({...props}) {
     });
 
     return (
-        <Modal aria-label={`Content for ${props.council}`} hasScrollingContent key={props.council} passiveModal modalLabel={'Local Goverment Area'} modalHeading={modalHeading} open={props.open} onRequestClose={() => props.onRequestClose(undefined)}>
+        <Modal aria-label={`Content for ${props.council}`} key={props.council} passiveModal modalLabel={'Local Goverment Area'} modalHeading={modalHeading} open={props.open} onRequestClose={() => props.onRequestClose(undefined)}>
                 <Tabs type='container'>
                     <Tab
                     href="#"
