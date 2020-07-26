@@ -24,6 +24,7 @@ import startCase from 'lodash/startCase';
 import times from 'lodash/times';
 import toLower from 'lodash/toLower';
 import faker from 'faker';
+import { indexOf } from "lodash";
 
 function LivabilityModal({...props}) {
 
@@ -37,7 +38,7 @@ function LivabilityModal({...props}) {
             group: goal.title,
             value: random(100, 3030)
         };
-    }).sort(() => Math.random() - 0.5).slice(0, 5);
+    }).sort(() => Math.random() - 0.5);
 
     const councilName = startCase(toLower(props.council));
     const modalHeading = `${councilName} Council`
